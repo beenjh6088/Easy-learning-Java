@@ -2,29 +2,28 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 Path : 
 	Chapter 05. 문자열, 배열, 열거타입
-	01. 문자열
+	01. 배열
 Description : 
-	01. 문자 리터럴이 같으면 동일 객체
-	02. 생성자를 쓰면 다른 객체
+	01. 메서드의 인수로 배열 전달
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */
 package ch05;
 
-public class _05_01_02_String1Demo {
+public class _05_03_02_IncrementDemo {
 
 	public static void main(String[] args) {
-		String s1 = "Hi, Java!";
-		String s2 = "Hi, Java!";
-		String s3 = new String("Hi, Java!");
-		String s4 = new String("Hi, Java!");
 		
-		System.out.println("s1 == s2 : " + (s1 == s2)); // true
-		System.out.println("s1 == s3 : " + (s1 == s3)); // false
-		System.out.println("s3 == s4 : " + (s3 == s4)); // false
-		System.out.println("s2 == s3 : " + (s2 == s3)); // false
+		int[] x = { 0 };
+		System.out.println("호출 전의 x[0] : " + x[0]);
 		
-		s1 = s3;
-		System.out.println("s1 == s3 : " + (s1 == s3)); // true
-		
+		increment(x);
+		System.out.println("호출 후의 x[0] : " + x[0]);
+	}
+	
+	public static void increment(int[] n) {
+		System.out.print("increment() 메서드 안에서 ");
+		System.out.print("n[0] : " + n[0] + " ---> ");
+		n[0]++;
+		System.out.println("n[0] : "+n[0]);
 	}
 }

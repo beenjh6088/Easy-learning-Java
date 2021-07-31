@@ -2,29 +2,30 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 Path : 
 	Chapter 05. 문자열, 배열, 열거타입
-	01. 문자열
+	01. 배열
 Description : 
-	01. 문자 리터럴이 같으면 동일 객체
-	02. 생성자를 쓰면 다른 객체
+	01. 메인 메서드의 매개변수 전달
+	02. cmd에서 java 실행시키기
+		01] $ java Test string0 string1 string2
+		02] 위 커맨드라인의 Test에는 확장자(.class)를 넣으면 안돼
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */
 package ch05;
 
-public class _05_01_02_String1Demo {
+public class _05_03_03_MainArgumentDemo {
 
 	public static void main(String[] args) {
-		String s1 = "Hi, Java!";
-		String s2 = "Hi, Java!";
-		String s3 = new String("Hi, Java!");
-		String s4 = new String("Hi, Java!");
 		
-		System.out.println("s1 == s2 : " + (s1 == s2)); // true
-		System.out.println("s1 == s3 : " + (s1 == s3)); // false
-		System.out.println("s3 == s4 : " + (s3 == s4)); // false
-		System.out.println("s2 == s3 : " + (s2 == s3)); // false
-		
-		s1 = s3;
-		System.out.println("s1 == s3 : " + (s1 == s3)); // true
-		
+		if (args.length == 2) {
+			int i = Integer.parseInt(args[1]);
+			nPrintln(args[0], i);
+		} else {
+			System.out.println("아이쿠!");
+		}
+	}
+	
+	public static void nPrintln(String s, int n) {
+		for (int i = 0; i < n; i++)
+			System.out.println(s);
 	}
 }

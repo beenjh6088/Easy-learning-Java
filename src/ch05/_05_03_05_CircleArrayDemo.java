@@ -2,29 +2,44 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 Path : 
 	Chapter 05. 문자열, 배열, 열거타입
-	01. 문자열
+	01. 배열
 Description : 
-	01. 문자 리터럴이 같으면 동일 객체
-	02. 생성자를 쓰면 다른 객체
+	01. 객체의 배열
+		01] Ball[] balls = new Ball[5];
+			01} 배열의 원소들은 Ball 객체와 연결되지 않았기 때문에 null값을 가진다. >> 초기화하고 써라
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */
 package ch05;
 
-public class _05_01_02_String1Demo {
+
+
+class Circle {
+	double radius;
+	
+	public Circle(double radius) {
+		this.radius = radius;
+	}
+	
+	public double getRadius() {
+		return radius;
+	}
+	
+	double findArea() {
+		return 3.14 * radius * radius;
+	}
+}
+
+
+
+public class _05_03_05_CircleArrayDemo {
 
 	public static void main(String[] args) {
-		String s1 = "Hi, Java!";
-		String s2 = "Hi, Java!";
-		String s3 = new String("Hi, Java!");
-		String s4 = new String("Hi, Java!");
 		
-		System.out.println("s1 == s2 : " + (s1 == s2)); // true
-		System.out.println("s1 == s3 : " + (s1 == s3)); // false
-		System.out.println("s3 == s4 : " + (s3 == s4)); // false
-		System.out.println("s2 == s3 : " + (s2 == s3)); // false
+		Circle[] circles = new Circle[5];
 		
-		s1 = s3;
-		System.out.println("s1 == s3 : " + (s1 == s3)); // true
-		
+		for (int i = 0; i < circles.length; i++) {
+			circles[i] = new Circle(i + 1.0); // 이번 예제의 핵심
+			System.out.printf("원의 넓이(반지름 : %.1f) : %.2f\n", circles[i].radius, circles[i].findArea());
+		}
 	}
 }

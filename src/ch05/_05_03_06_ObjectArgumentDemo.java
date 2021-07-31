@@ -2,29 +2,39 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 Path : 
 	Chapter 05. 문자열, 배열, 열거타입
-	01. 문자열
+	01. 배열
 Description : 
-	01. 문자 리터럴이 같으면 동일 객체
-	02. 생성자를 쓰면 다른 객체
+	01. 매개변수로 객체 전달
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */
 package ch05;
 
-public class _05_01_02_String1Demo {
+
+
+public class _05_03_06_ObjectArgumentDemo {
 
 	public static void main(String[] args) {
-		String s1 = "Hi, Java!";
-		String s2 = "Hi, Java!";
-		String s3 = new String("Hi, Java!");
-		String s4 = new String("Hi, Java!");
 		
-		System.out.println("s1 == s2 : " + (s1 == s2)); // true
-		System.out.println("s1 == s3 : " + (s1 == s3)); // false
-		System.out.println("s3 == s4 : " + (s3 == s4)); // false
-		System.out.println("s2 == s3 : " + (s2 == s3)); // false
+		Circle c1 = new Circle(10.0);
+		Circle c2 = new Circle(10.0);
 		
-		s1 = s3;
-		System.out.println("s1 == s3 : " + (s1 == s3)); // true
+		System.out.println("원(c1)의 반지름 : " + c1.radius);
+		System.out.println("원(c2)의 반지름 : " + c2.radius);
 		
+		System.out.println("-------------------");
+		
+		zero(c1);
+		System.out.println("원(c1)의 반지름 : " + c1.radius);
+		
+		zero(c2.radius);
+		System.out.println("원(c2)의 반지름 : " + c2.radius);
+	}
+	
+	public static void zero(Circle c) {
+		c.radius = 0.0;
+	}
+	
+	public static void zero(double r) {
+		r = 0;
 	}
 }
