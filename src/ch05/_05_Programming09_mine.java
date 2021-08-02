@@ -50,7 +50,9 @@ public class _05_Programming09_mine {
 		
 		
 		// Print Mine Position and Blank Position
-		arr_print = arr_mines.clone();
+		for (int i = 0; i < arr_mines.length; i++) {
+			System.arraycopy(arr_mines[i], 0, arr_print[i], 0, arr_mines[i].length);
+		}
 		for (int i = 0; i < arr_mines.length; i++) {
 			for (int j = 0; j < arr_mines[i].length; j++) {
 				// for 문 한 번 더쓰는 방향으로 가보자
@@ -58,11 +60,22 @@ public class _05_Programming09_mine {
 		}
 		
 		
-		// Print Original
-		System.out.println("PRINT ORIGINAL");
+		// Print NEW
+		System.out.println("PRINT NEW");
 		for (int i = 0; i < arr_print.length; i++) {
 			for (int j = 0; j < arr_print[i].length; j++) {
 				System.out.printf("%2s", arr_print[i][j]);
+			}
+			System.out.println("\n");
+		}
+		System.out.println();
+		
+		
+		// Print Original
+		System.out.println("PRINT ORIGINAL");
+		for (int i = 0; i < arr_mines.length; i++) {
+			for (int j = 0; j < arr_mines[i].length; j++) {
+				System.out.printf("%2s", arr_mines[i][j]);
 			}
 			System.out.println("\n");
 		}
