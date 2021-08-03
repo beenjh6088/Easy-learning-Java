@@ -13,73 +13,110 @@ Description :
 */
 package ch05;
 
-public class _05_Programming09_mine {
+import java.util.Random;
 
+public class _05_Programming09_mine {
+	
+	private static final String MINE = " X ";
+	private static final String NONE = " O ";
+	private static final int ROW = 10;
+	private static final int COL = 10;
+	private static final int MINE_COUNT = 10;
+	private String[][] mineBoard;
+	
+	
 	public static void main(String[] args) {
-		// Parameters
-		int m = 5;
-		int n = 10;
-		double p = 0.3;
-		
-		
-		// Initialize
-		String NON_MINE = "-";
-		String MINE = "*";
-		String [][] arr_mines = new String[m][n];
-		String [][] arr_print = new String[m][n];
-		for (int i = 0; i < arr_mines.length; i++) {
-			for (int j = 0; j < arr_mines[i].length; j++) {
-				if (Math.random() < p) {
-					arr_mines[i][j] = MINE;
-				} else {
-					arr_mines[i][j] = NON_MINE;
-				}
-			}
-		}
-		
-		
-		// Print Original
-		System.out.println("PRINT ORIGINAL");
-		for (int i = 0; i < arr_mines.length; i++) {
-			for (int j = 0; j < arr_mines[i].length; j++) {
-				System.out.printf("%2s", arr_mines[i][j]);
-			}
-			System.out.println("\n");
-		}
-		System.out.println();
-		
-		
-		// Print Mine Position and Blank Position
-		for (int i = 0; i < arr_mines.length; i++) {
-			System.arraycopy(arr_mines[i], 0, arr_print[i], 0, arr_mines[i].length);
-		}
-		for (int i = 0; i < arr_mines.length; i++) {
-			for (int j = 0; j < arr_mines[i].length; j++) {
-				// for 문 한 번 더쓰는 방향으로 가보자
-			}
-		}
-		
-		
-		// Print NEW
-		System.out.println("PRINT NEW");
-		for (int i = 0; i < arr_print.length; i++) {
-			for (int j = 0; j < arr_print[i].length; j++) {
-				System.out.printf("%2s", arr_print[i][j]);
-			}
-			System.out.println("\n");
-		}
-		System.out.println();
-		
-		
-		// Print Original
-		System.out.println("PRINT ORIGINAL");
-		for (int i = 0; i < arr_mines.length; i++) {
-			for (int j = 0; j < arr_mines[i].length; j++) {
-				System.out.printf("%2s", arr_mines[i][j]);
-			}
-			System.out.println("\n");
-		}
-		System.out.println();
-		
+		_05_Programming09_mine mineSweeper = new _05_Programming09_mine();
+		mineSweeper.initBoard();
+    mineSweeper.setMineLocation();
+    mineSweeper.setBoardValues();
+    mineSweeper.printBoard();
 	}
+	
+	
+	public _05_Programming09_mine() {
+		this.mineBoard = new String[ROW][COL];
+	}
+	
+	
+	public void initBoard() {
+		for (int i = 0; i < ROW; i ++) {
+			for (int j = 0; j < COL; j++) {
+				mineBoard[i][j] = NONE;
+			}
+		}
+	}
+	
+	
+  public void setMineLocation() {
+    int mineCnt = MINE_COUNT;
+    Random random = new Random();
+
+    while (mineCnt-- > 0) {
+	    int ranRow = random.nextInt(ROW);
+	    int ranCol = random.nextInt(COL);
+	
+	    if (isMine(ranRow, ranCol)) {
+	        mineCnt++;
+	    } else {
+	        mineBoard[ranRow][ranCol] = MINE;
+	    }
+    }
+  }
+	
+	
+	public void setBoardValues() {
+		for (int i = 0; i < ROW; i++) {
+			for (int j = 0; j < COL; j++) {
+				if (isNotMine(i, j)) mineBoard[i][j] = getNearMineCount(i, j);
+			}
+		}
+	}
+	
+	
+	public String getNearMineCount(int row, int col) {
+		int count = 0;
+		
+		if (isMine(row - 1, col - 1)) count++;
+		if (isMine(row - 1, col)) count++;
+		if (isMine(row - 1, col + 1)) count++;
+		if (isMine(row, col - 1)) count++;
+		if (isMine(row, col + 1)) count++;
+		if (isMine(row + 1, col - 1)) count++;
+		if (isMine(row + 1, col)) count++;
+		if (isMine(row + 1, col + 1)) count++;
+		
+		return " " + count + " ";
+	}
+	
+	
+	private boolean isMine(int row, int col) {
+		try {
+			return mineBoard[row][col].equals(MINE);
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
+	}
+	
+	
+	private boolean isNotMine(int i, int j) {
+		return !isMine(i, j);
+	}
+	
+	
+	public void printBoard() {
+		System.out.println("ROW : " + ROW);
+		System.out.println("COL : " + COL);
+		System.out.println("-----------------------------");
+		
+		for (int i = 0; i < ROW; i++) {
+			for (int j = 0; j < COL; j++) {
+				System.out.print(mineBoard[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
 }
+
+
