@@ -11,6 +11,9 @@ Description :
 		01] 부모, 자식 클래스 관계 : is-a 관계 성립 여부를 판단할 것
 		02] 상속의 선언 : extends 키워드
 		03] 현실 세계와 상속 적용 : 부모 클래스의 private멤버를 제외한 모든 멤버는 자식 클래스에 상속된다.
+	03. 메서드 오버라이딩
+		01] @Override : 부모 클래스의 메서드를 덮어쓴다는 것을 알려줌. Override 문법에 어긋나면 컴파일 오류 발생
+		02] super : 부모 클래스 참조
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 */
 package ch06;
@@ -56,6 +59,15 @@ class Ball extends Circle {
 	
 	public void findColor() {
 		System.out.println(color + " 공이다.");
+	}
+	
+	@Override
+	public void findArea() {
+		findRadius(); // 부모 클래스의 메서드. super 없이도 사용 가능
+		
+		super.findArea(); // 본래 부모 클래스의 메서드.
+		
+		System.out.println("넓이는 4*(파이 * 반지름 * 반지름) 이다");
 	}
 	
 	public void findVolume() {
