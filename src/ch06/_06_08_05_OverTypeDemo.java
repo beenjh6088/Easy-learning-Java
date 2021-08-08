@@ -13,10 +13,10 @@ Description :
 ________________/ |void whoami()|__
 Vehicle type    \ |static move()|__\_____O move
                  \|_____________|   \  
-                 /|name         |    \ 
-                / |void whoami()|     \__O whoami()
-_______________/  |static move()|
-Car type       \  |void excel() |
+                 /|name         |___ \ __O name 
+                / |void whoami()|_____\__O whoami()
+_______________/  |static move()|________O move
+Car type       \  |void excel() |________O excel()
                 \ |             |
                  \|_____________|
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
