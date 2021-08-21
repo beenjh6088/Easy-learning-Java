@@ -16,17 +16,43 @@ Description :
 */
 package ch07;
 
-public class _07_04_02_ControllableDemo {
+public class _07_04_02_AnimalDemo {
 
 	public static void main(String[] args) {
-		Controllable[] controllable = { new TV(), new Computer() };
+		Dog d = new Dog();
+		Cuckoo c = new Cuckoo();
 		
-		for (Controllable c : controllable) {
-			c.turnOn();
-			c.turnOff();
-			c.repair();
-		}
-		Controllable.reset();
+		makeSound(d);
+		makeSound(c);
 	}
 
+	public static void makeSound(Animal a) { // 매개변수를 인터페이스타입으로 설정
+		a.sound();
+	}
+}
+
+interface Animal {
+	void sound();
+}
+
+
+class Dog implements Animal {
+
+	@Override
+	public void sound() {
+		// TODO Auto-generated method stub
+		System.out.println("멍멍~~");
+	}
+	
+}
+
+
+class Cuckoo implements Animal {
+
+	@Override
+	public void sound() {
+		// TODO Auto-generated method stub
+		System.out.println("뻐꾹~~");
+	}
+	
 }
